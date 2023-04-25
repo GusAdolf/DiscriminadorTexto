@@ -1,0 +1,98 @@
+{% extends 'base.html' %} {% block content %}
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+
+<div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Seleccione una Opcion</a>
+        <div class="dropdown-menu shadow-sm m-0">
+            <a href="#" id="opcion-frase" class="dropdown-item" onclick="mostrarOpciones('frase')">Ingresar Frase</a>
+            <a href="#" id="opcion-documento" class="dropdown-item" onclick="mostrarOpciones('documento')">Cargar Documento</a>
+
+        
+        </div>
+    </div>
+</div>
+
+
+</nav>
+<form class="row g-3" action="/result" method="POST">
+<div class="container-fluid hero-header bg-light py-5 mb-5" >
+    <div class="container py-5" id = "contenedor">
+        <div class="mb-3"><h4>Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>
+    </div>
+   
+</div>   
+{% if norm3 %}
+<h1> {{norm3[0]}}</h1>
+<h1> {{norm3[1]}}</h1>
+<h1> {{norm3[2]}}</h1>
+<div>
+    <label for="raza-progress">Raza:</label>
+    <progress id="raza-progress" value="{{ norm3[0] }}" max="{{ norm3[0] }}"></progress>
+</div>
+
+<div>
+    <label for="sexo-progress">Sexo:</label>
+    <progress id="sexo-progress" value="{{ norm3[1] }}" max="{{ norm3[1] }}"></progress>
+</div>
+
+<div>
+    <label for="genero-progress">Género:</label>
+    <progress id="genero-progress" value="{{ norm3[2] }}" max="{{ norm3[2] }}"></progress>
+</div>
+
+<div>
+    <label for="edad-progress">Edad:</label>
+    <progress id="edad-progress" value="{{ norm3[3] }}" max="{{ norm3[3] }}"></progress>
+</div>
+
+
+
+
+{% endif %} 
+</form>
+
+
+   
+
+
+
+<script>
+    function mostrarOpciones(opcionSeleccionada) {
+        var opcionesContenedor = document.getElementById('contenedor');
+    
+        if (opcionSeleccionada === 'frase') {
+            opcionesContenedor.innerHTML = '<div class="mb-3"><h4>Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>  <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown" onclick="upDateOutput()" id="bot">Procesar</button>' ;
+            
+        } else if (opcionSeleccionada === 'documento') {
+            opcionesContenedor.innerHTML = '<input type="file" id="file-input" multiple><h4>Contenido del archivo:</h4><textarea readonly class="form-control" name="frase" id="contenido-archivo" rows="3"></textarea> <br>  <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown" onclick="upDateOutput()" id="bot">Procesar</button>';
+
+            document.getElementById('file-input').addEventListener('change', leerArchivo, false);
+        }
+    }
+    function leerArchivo(evento) {
+        var archivo = evento.target.files[0];
+        var lector = new FileReader();
+    
+        lector.onload = function() {
+            var contenido = lector.result;
+            document.getElementById('contenido-archivo').value = contenido;
+        }
+    
+        lector.readAsText(archivo);
+    }
+
+    
+    
+
+
+</script>
+
+
+
+{% endblock %}
