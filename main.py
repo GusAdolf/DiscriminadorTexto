@@ -45,7 +45,7 @@ def result ():
     if(texto!=""):
         norm=funciones.discriminatorio1(texto)
         norm2=funciones.discriminatorio2(texto)
-        return render_template("procesar.html",norm=norm,norm2=norm2[0],norm3=norm2[1],norm4=norm2[2],texto=texto)
+        return render_template("procesar.html",norm=norm[1],norm3=norm2[1],texto=texto)
  
     """"elif(archivo!=""):
         norm=funciones.discriminatorio1(archivo)

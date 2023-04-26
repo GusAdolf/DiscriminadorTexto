@@ -105,6 +105,7 @@ def discriminatorio1(text):
   vc = []
   vd = []
   vt = []
+  porce2=[0,0,0,0]
   for i in range(len(text)):
     t = [text[i]]
     for j in range(0,28):
@@ -120,15 +121,19 @@ def discriminatorio1(text):
   st = sr+sg+so+se
   if sr>0:
     vt.append("Discriminación por Raza en: "+str(round((sr*100)/st,2))+"%")
+    porce2[0]=round((sr*100)/st)
   if sg>0:
     vt.append("Discriminación por Género en: "+str(round((sg*100)/st,2))+"%")
+    porce2[1]=round((sg*100)/st)
   if so>0:
     vt.append("Discriminación por Orientación Sexual en: "+str(round((so*100)/st,2))+"%")
+    porce2[2]=round((so*100)/st)
   if se>0:
     vt.append("Discriminación por Edad en: "+str(round((se*100)/st,2))+"%")
+    porce2[3]=round((se*100)/st)
   if st==0:
     vt.append("El texto no tiene ningun tipo de discriminación")
-  return "\n".join(vt)
+  return "\n".join(vt), porce2
 
 ###COSENO VECTORIAL###
 r = set(np.concatenate(raza))

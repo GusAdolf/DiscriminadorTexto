@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}  {% block content %}
 
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -22,40 +22,113 @@
 </nav>
 <form class="row g-3" action="/result" method="POST">
 <div class="container-fluid hero-header bg-light py-5 mb-5" >
-    <div class="container py-5" id = "contenedor">
+    <div class="container-fluid hero-header bg-light py-5 mb-5" id = "contenedor">
         <div class="mb-3"><h4>Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>
     </div>
    
 </div>   
-{% if norm3 %}
-<h1> {{norm3[0]}}</h1>
-<h1> {{norm3[1]}}</h1>
-<h1> {{norm3[2]}}</h1>
-<div>
-    <label for="raza-progress">Raza:</label>
-    <progress id="raza-progress" value="{{ norm3[0] }}" max="{{ norm3[0] }}"></progress>
-</div>
-
-<div>
-    <label for="sexo-progress">Sexo:</label>
-    <progress id="sexo-progress" value="{{ norm3[1] }}" max="{{ norm3[1] }}"></progress>
-</div>
-
-<div>
-    <label for="genero-progress">Género:</label>
-    <progress id="genero-progress" value="{{ norm3[2] }}" max="{{ norm3[2] }}"></progress>
-</div>
-
-<div>
-    <label for="edad-progress">Edad:</label>
-    <progress id="edad-progress" value="{{ norm3[3] }}" max="{{ norm3[3] }}"></progress>
-</div>
 
 
+<div class="container">
+    <div class="row container-fluid hero-header bg-light py-5 mb-5">
+      <div class="col-md-6">
+        <h1>Por el metodo de Coseno la frase : {{texto}}</h1>
+  
+        <div class="container mt-4">
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="progress">
+                <label for="edad-progress">Raza:&nbsp </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='raza'></div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="progress">
+                <label for="edad-progress">Genero:&nbsp </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='genero'></div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="progress">
+                <label for="edad-progress">Orientacion Sexual:  </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='orientacion'></div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="progress">
+                <label for="edad-progress">Edad: </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='edad'></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <h1>aqui va el otro metodo</h1>
+  
+        <div class="container mt-4">
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="progress">
+                <label for="edad-progress">Raza:&nbsp </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='raza1'></div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="progress">
+                <label for="edad-progress">Genero:&nbsp </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='genero1'></div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="progress">
+                <label for="edad-progress">Orientacion Sexual:  </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='orientacion1'></div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="progress">
+                <label for="edad-progress">Edad: </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='edad1'></div>
+            </div>
+        </div>
+      </div>  
+    </div>  
+</div>           
+  
 
 
-{% endif %} 
+
+
+
 </form>
+
+{% if norm3 %}
+  <div id="norm3-values" data-norm3="{{ norm3 }}"></div>
+{% endif %}
+
+{% if norm %}
+  <div id="norm-values" data-norm="{{ norm }}"></div>
+{% endif %}
 
 
    
@@ -63,14 +136,24 @@
 
 
 <script>
+
+        // Obtener el valor de norm3 desde el atributo data-norm3
+    var norm3 = JSON.parse(document.getElementById("norm3-values").getAttribute("data-norm3"));
+    var norm = JSON.parse(document.getElementById("norm-values").getAttribute("data-norm"));
+
+
+    
+    console.log(norm3);
+    console.log("hola mundo")
+
     function mostrarOpciones(opcionSeleccionada) {
         var opcionesContenedor = document.getElementById('contenedor');
     
         if (opcionSeleccionada === 'frase') {
-            opcionesContenedor.innerHTML = '<div class="mb-3"><h4>Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>  <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown" onclick="upDateOutput()" id="bot">Procesar</button>' ;
+            opcionesContenedor.innerHTML = '<div class="mb-3"><h4>Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>' ;
             
         } else if (opcionSeleccionada === 'documento') {
-            opcionesContenedor.innerHTML = '<input type="file" id="file-input" multiple><h4>Contenido del archivo:</h4><textarea readonly class="form-control" name="frase" id="contenido-archivo" rows="3"></textarea> <br>  <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown" onclick="upDateOutput()" id="bot">Procesar</button>';
+            opcionesContenedor.innerHTML = '<input type="file" id="file-input" multiple><h4>Contenido del archivo:</h4><textarea readonly class="form-control" name="frase" id="contenido-archivo" rows="3"></textarea> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>';
 
             document.getElementById('file-input').addEventListener('change', leerArchivo, false);
         }
@@ -86,6 +169,40 @@
     
         lector.readAsText(archivo);
     }
+    
+
+        function makeProgress(elementId, normIndex, i) {
+            if (i < norm3[normIndex]) {
+              i = i + 2;
+              $(elementId).css("width", i + "%").text(i + "%");
+              setTimeout(function() {
+                makeProgress(elementId, normIndex, i);
+              }, 100);
+            }
+          }
+          
+          makeProgress("#raza", 0, 0);
+          makeProgress("#genero", 1, 0);
+          makeProgress("#orientacion", 2, 0);
+          makeProgress("#edad", 3, 0);
+
+
+          function makeProgress2(elementId, normIndex, i) {
+            if (i < norm[normIndex]) {
+              i = i + 2;
+              $(elementId).css("width", i + "%").text(i + "%");
+              setTimeout(function() {
+                makeProgress(elementId, normIndex, i);
+              }, 100);
+            }
+          }
+          
+          makeProgress2("#raza1", 0, 0);
+          makeProgress2("#genero1", 1, 0);
+          makeProgress2("#orientacion1", 2, 0);
+          makeProgress2("#edad1", 3, 0);
+       
+       
 
     
     
@@ -93,6 +210,6 @@
 
 </script>
 
-
-
 {% endblock %}
+
+
