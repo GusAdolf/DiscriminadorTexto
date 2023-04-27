@@ -1,5 +1,6 @@
 {% extends 'base.html' %}  {% block content %}
 
+<div class="container-fluid hero-header bg-light py-5 mb-5">
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
     <span class="navbar-toggler-icon"></span>
@@ -20,11 +21,13 @@
 
 
 </nav>
-<form class="row g-3" action="/result" method="POST">
-<div class="container-fluid hero-header bg-light py-5 mb-5" >
-    <div class="container-fluid hero-header bg-light py-5 mb-5" id = "contenedor">
-        <div class="mb-3"><h4>Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>
+<form class="row g-1" action="/result" method="POST">
+<div class="container-fluid hero-header bg-light py-1 mb-1" >
+    <div class="container-fluid hero-header bg-light py-1 mb-1" id = "contenedor">
+        <div class="mb-1"> <br> <br> <br> <br> Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>
     </div>
+    
+
    
 </div>   
 
@@ -32,84 +35,120 @@
 <div class="container">
     <div class="row container-fluid hero-header bg-light py-5 mb-5">
       <div class="col-md-6">
-        <h1>Por el metodo de Coseno la frase : {{texto}}</h1>
+
+        <div class="jumbotron">
+          <div class="container pt-3">
+            <h1 class="display-5 text-center  display-7"> Similitud Modelo Coseno Vectorial </h1>
+            <h3 class="display-6"> Corpus analizado: {{texto}}</h4>
+          </div>
+        </div>
+        
   
         <div class="container mt-4">
           <div class="row mt-4">
             <div class="col-md-12">
-              <div class="progress">
-                <label for="edad-progress">Raza:&nbsp </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='raza'></div>
+
+              <div class="progress" style="height: 30px;">
+                <label for="edad-progress" class="h5">Raza </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='raza'></div>
               </div>
+            
             </div>
           </div>
   
           <div class="row mt-4">
             <div class="col-md-12">
-              <div class="progress">
-                <label for="edad-progress">Genero:&nbsp </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='genero'></div>
+
+
+              <div class="progress" style="height: 30px;">
+                <label for="edad-progress" class="h5">Genero: </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='genero'></div>
               </div>
+            
             </div>
           </div>
   
           <div class="row mt-4">
             <div class="col-md-12">
-              <div class="progress">
-                <label for="edad-progress">Orientacion Sexual:  </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='orientacion'></div>
+
+
+
+              <div class="progress" style="height: 30px;">
+                <label for="edad-progress" class="h5">Orientacion Sexual: </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='orientacion'></div>
               </div>
+
+
+             
             </div>
           </div>
   
           <div class="row mt-4">
             <div class="col-md-12">
-              <div class="progress">
-                <label for="edad-progress">Edad: </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='edad'></div>
+
+
+              <div class="progress" style="height: 30px;">
+                <label for="edad-progress" class="h5">Edad:</label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='edad'></div>
               </div>
+
+              
             </div>
           </div>
         </div>
       </div>
   
       <div class="col-md-6">
-        <h1>aqui va el otro metodo</h1>
+        <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-5 text-center"> Similitud Modelo Jaccard </h1>
+            <h3 class="display-6"> Corpus analizado: {{texto}}</h3>
+          </div>
+        </div>
   
         <div class="container mt-4">
           <div class="row mt-4">
             <div class="col-md-12">
-              <div class="progress">
-                <label for="edad-progress">Raza:&nbsp </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='raza1'></div>
+
+
+              <div class="progress" style="height: 30px;">
+                <label for="edad-progress" class="h5">Raza:</label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='raza1'></div>
               </div>
+
+
             </div>
           </div>
   
           <div class="row mt-4">
             <div class="col-md-12">
-              <div class="progress">
-                <label for="edad-progress">Genero:&nbsp </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='genero1'></div>
+
+              <div class="progress" style="height: 30px;">
+                <label for="edad-progress" class="h5">Genero:</label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='genero1'></div>
               </div>
+              
+              
             </div>
           </div>
   
           <div class="row mt-4">
             <div class="col-md-12">
-              <div class="progress">
-                <label for="edad-progress">Orientacion Sexual:  </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='orientacion1'></div>
+
+              <div class="progress" style="height: 30px;">
+                <label for="edad-progress" class="h5">Orientacion Sexual:</label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='orientacion1'></div>
               </div>
+              
             </div>
           </div>
   
           <div class="row mt-4">
             <div class="col-md-12">
-              <div class="progress">
-                <label for="edad-progress">Edad: </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px;" id='edad1'></div>
-            </div>
+              <div class="progress" style="height: 30px;">
+                <label for="edad-progress" class="h5">Edad: </label>
+                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='edad1'></div>
+              </div>
         </div>
       </div>  
     </div>  
@@ -121,6 +160,8 @@
 
 
 </form>
+</div>
+
 
 {% if norm3 %}
   <div id="norm3-values" data-norm3="{{ norm3 }}"></div>
@@ -129,6 +170,7 @@
 {% if norm %}
   <div id="norm-values" data-norm="{{ norm }}"></div>
 {% endif %}
+
 
 
    
@@ -150,10 +192,10 @@
         var opcionesContenedor = document.getElementById('contenedor');
     
         if (opcionSeleccionada === 'frase') {
-            opcionesContenedor.innerHTML = '<div class="mb-3"><h4>Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>' ;
+            opcionesContenedor.innerHTML = '<div class="mb-3"><h4> <br> <br><br> <br> Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>' ;
             
         } else if (opcionSeleccionada === 'documento') {
-            opcionesContenedor.innerHTML = '<input type="file" id="file-input" multiple><h4>Contenido del archivo:</h4><textarea readonly class="form-control" name="frase" id="contenido-archivo" rows="3"></textarea> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>';
+            opcionesContenedor.innerHTML = '<br> <br><br> <br><input type="file" id="file-input" multiple><h4>Contenido del archivo:</h4><textarea readonly class="form-control" name="frase" id="contenido-archivo" rows="3"></textarea> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>';
 
             document.getElementById('file-input').addEventListener('change', leerArchivo, false);
         }
@@ -211,5 +253,4 @@
 </script>
 
 {% endblock %}
-
 
