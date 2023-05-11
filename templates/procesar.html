@@ -1,256 +1,266 @@
-{% extends 'base.html' %}  {% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <div class="container-fluid hero-header bg-light py-5 mb-5">
-<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
     <span class="navbar-toggler-icon"></span>
 </button>
 
-
-<div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Seleccione una Opcion</a>
-        <div class="dropdown-menu shadow-sm m-0">
-            <a href="#" id="opcion-frase" class="dropdown-item" onclick="mostrarOpciones('frase')">Ingresar Frase</a>
-            <a href="#" id="opcion-documento" class="dropdown-item" onclick="mostrarOpciones('documento')">Cargar Documento</a>
-
-        
+        <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+            <div class="nav-item dropdown text-center">
+                <a href="#" class="nav-link dropdown-toggle fs-4" data-bs-toggle="dropdown">Seleccione una Opcion</a>
+                <div class="dropdown-menu shadow-sm m-0">
+                    <a href="#" id="opcion-frase" class="dropdown-item" onclick="mostrarOpciones('frase')">Ingresar Texto</a>
+                    <a href="#" id="opcion-documento" class="dropdown-item" onclick="mostrarOpciones('documento')">Cargar Documento</a>
+                </div>
+            </div>
         </div>
+
+        <style>
+            .dropdown-item.active {
+                background-color: #0d6efd;
+                color: #fff;
+            }
+        </style>
+
+        <script>
+            $(function() {
+                // Al hacer clic en un elemento del menú desplegable
+                $('.dropdown-item').on('click', function() {
+                    // Eliminar la clase 'active' de todos los elementos del menú desplegable
+                    $('.dropdown-item').removeClass('active');
+                    // Agregar la clase 'active' al elemento seleccionado
+                    $(this).addClass('active');
+                });
+            });
+        </script>
+
+
+    </nav>
+    <form class="row g-1" action="/result" method="POST">
+        <div class="container-fluid hero-header bg-light py-1 mb-1">
+            <div class="container-fluid hero-header bg-light py-1 mb-1" id="contenedor">
+                <div class="mb-1"> <br> <br> <br> <br>
+                    <h2>Ingresar Texto</h2><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br> <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown" id="bot">Procesar</button>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="container">
+            <div class="row container-fluid hero-header bg-light py-5 mb-5">
+                <div class="col-md-6">
+
+                    <div class="jumbotron">
+                        <div class="container pt-3">
+                            <h1 class="display-5 text-center  display-7"> Modelo Coseno Vectorial </h1>
+                            <h5> Corpus analizado: {{texto}}</h5>
+                        </div>
+                    </div>
+
+
+                    <div class="container mt-4">
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+
+                                <div class="progress" style="height: 30px;">
+                                    <label for="edad-progress" class="h5">Raza </label>
+                                    <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='raza'></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+
+
+                                <div class="progress" style="height: 30px;">
+                                    <label for="edad-progress" class="h5">Genero: </label>
+                                    <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='genero'></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+
+
+
+                                <div class="progress" style="height: 30px;">
+                                    <label for="edad-progress" class="h5">Orientacion Sexual: </label>
+                                    <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='orientacion'></div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+
+
+                                <div class="progress" style="height: 30px;">
+                                    <label for="edad-progress" class="h5">Edad:</label>
+                                    <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='edad'></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+
+                    <div class="jumbotron">
+                        <div class="container pt-3">
+                            <h1 class="display-5 text-center  display-7"> Modelo Jaccard </h1>
+                            <h5> Corpus analizado: {{texto}}</h5>
+                        </div>
+                    </div>
+
+
+                    <div class="container mt-4">
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+
+
+                                <div class="progress" style="height: 30px;">
+                                    <label for="edad-progress" class="h5">Raza:</label>
+                                    <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='raza1'></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+
+                                <div class="progress" style="height: 30px;">
+                                    <label for="edad-progress" class="h5">Genero:</label>
+                                    <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='genero1'></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+
+                                <div class="progress" style="height: 30px;">
+                                    <label for="edad-progress" class="h5">Orientacion Sexual:</label>
+                                    <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='orientacion1'></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <div class="progress" style="height: 30px;">
+                                    <label for="edad-progress" class="h5">Edad: </label>
+                                    <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='edad1'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+    </form>
     </div>
-</div>
 
 
-</nav>
-<form class="row g-1" action="/result" method="POST">
-<div class="container-fluid hero-header bg-light py-1 mb-1" >
-    <div class="container-fluid hero-header bg-light py-1 mb-1" id = "contenedor">
-        <div class="mb-1"> <br> <br> <br> <br> Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>
-    </div>
-    
-
-   
-</div>   
-
-
-<div class="container">
-    <div class="row container-fluid hero-header bg-light py-5 mb-5">
-      <div class="col-md-6">
-
-        <div class="jumbotron">
-          <div class="container pt-3">
-            <h1 class="display-5 text-center  display-7"> Similitud Modelo Coseno Vectorial </h1>
-            <h3 class="display-6"> Corpus analizado: {{texto}}</h4>
-          </div>
-        </div>
-        
-  
-        <div class="container mt-4">
-          <div class="row mt-4">
-            <div class="col-md-12">
-
-              <div class="progress" style="height: 30px;">
-                <label for="edad-progress" class="h5">Raza </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='raza'></div>
-              </div>
-            
-            </div>
-          </div>
-  
-          <div class="row mt-4">
-            <div class="col-md-12">
-
-
-              <div class="progress" style="height: 30px;">
-                <label for="edad-progress" class="h5">Genero: </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='genero'></div>
-              </div>
-            
-            </div>
-          </div>
-  
-          <div class="row mt-4">
-            <div class="col-md-12">
-
-
-
-              <div class="progress" style="height: 30px;">
-                <label for="edad-progress" class="h5">Orientacion Sexual: </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='orientacion'></div>
-              </div>
-
-
-             
-            </div>
-          </div>
-  
-          <div class="row mt-4">
-            <div class="col-md-12">
-
-
-              <div class="progress" style="height: 30px;">
-                <label for="edad-progress" class="h5">Edad:</label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='edad'></div>
-              </div>
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-md-6">
-        <div class="jumbotron">
-          <div class="container">
-            <h1 class="display-5 text-center"> Similitud Modelo Jaccard </h1>
-            <h3 class="display-6"> Corpus analizado: {{texto}}</h3>
-          </div>
-        </div>
-  
-        <div class="container mt-4">
-          <div class="row mt-4">
-            <div class="col-md-12">
-
-
-              <div class="progress" style="height: 30px;">
-                <label for="edad-progress" class="h5">Raza:</label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='raza1'></div>
-              </div>
-
-
-            </div>
-          </div>
-  
-          <div class="row mt-4">
-            <div class="col-md-12">
-
-              <div class="progress" style="height: 30px;">
-                <label for="edad-progress" class="h5">Genero:</label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='genero1'></div>
-              </div>
-              
-              
-            </div>
-          </div>
-  
-          <div class="row mt-4">
-            <div class="col-md-12">
-
-              <div class="progress" style="height: 30px;">
-                <label for="edad-progress" class="h5">Orientacion Sexual:</label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='orientacion1'></div>
-              </div>
-              
-            </div>
-          </div>
-  
-          <div class="row mt-4">
-            <div class="col-md-12">
-              <div class="progress" style="height: 30px;">
-                <label for="edad-progress" class="h5">Edad: </label>
-                <div class="progress-bar progress-bar-striped" style="min-width: 20px; font-size: 20px;" id='edad1'></div>
-              </div>
-        </div>
-      </div>  
-    </div>  
-</div>           
-  
+    {% if norm3 %}
+    <div id="norm3-values" data-norm3="{{ norm3 }}"></div>
+    {% endif %} {% if norm %}
+    <div id="norm-values" data-norm="{{ norm }}"></div>
+    {% endif %}
 
 
 
 
 
-</form>
-</div>
 
 
-{% if norm3 %}
-  <div id="norm3-values" data-norm3="{{ norm3 }}"></div>
-{% endif %}
-
-{% if norm %}
-  <div id="norm-values" data-norm="{{ norm }}"></div>
-{% endif %}
-
-
-
-   
-
-
-
-<script>
-
+    <script>
         // Obtener el valor de norm3 desde el atributo data-norm3
-    var norm3 = JSON.parse(document.getElementById("norm3-values").getAttribute("data-norm3"));
-    var norm = JSON.parse(document.getElementById("norm-values").getAttribute("data-norm"));
+        var norm3 = JSON.parse(document.getElementById("norm3-values").getAttribute("data-norm3"));
+        var norm = JSON.parse(document.getElementById("norm-values").getAttribute("data-norm"));
 
 
-    
-    console.log(norm3);
-    console.log("hola mundo")
 
-    function mostrarOpciones(opcionSeleccionada) {
-        var opcionesContenedor = document.getElementById('contenedor');
-    
-        if (opcionSeleccionada === 'frase') {
-            opcionesContenedor.innerHTML = '<div class="mb-3"><h4> <br> <br><br> <br> Ingresar Frase</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>' ;
-            
-        } else if (opcionSeleccionada === 'documento') {
-            opcionesContenedor.innerHTML = '<br> <br><br> <br><input type="file" id="file-input" multiple><h4>Contenido del archivo:</h4><textarea readonly class="form-control" name="frase" id="contenido-archivo" rows="3"></textarea> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>';
+        console.log(norm3);
+        console.log("hola mundo")
 
-            document.getElementById('file-input').addEventListener('change', leerArchivo, false);
+        function mostrarOpciones(opcionSeleccionada) {
+            var opcionesContenedor = document.getElementById('contenedor');
+
+            if (opcionSeleccionada === 'frase') {
+                opcionesContenedor.innerHTML = '<div class="mb-3"><h4> <br> <br><br> <br> Ingresar Texto</h4><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>';
+
+            } else if (opcionSeleccionada === 'documento') {
+                opcionesContenedor.innerHTML = '<br> <br><br> <br><input type="file" id="file-input" multiple><h4>Contenido del archivo:</h4><textarea readonly class="form-control" name="frase" id="contenido-archivo" rows="3"></textarea> <br>   <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"  id="bot">Procesar</button>';
+
+                document.getElementById('file-input').addEventListener('change', leerArchivo, false);
+            }
         }
-    }
-    function leerArchivo(evento) {
-        var archivo = evento.target.files[0];
-        var lector = new FileReader();
-    
-        lector.onload = function() {
-            var contenido = lector.result;
-            document.getElementById('contenido-archivo').value = contenido;
+
+        function leerArchivo(evento) {
+            var archivo = evento.target.files[0];
+            var lector = new FileReader();
+
+            lector.onload = function() {
+                var contenido = lector.result;
+                document.getElementById('contenido-archivo').value = contenido;
+            }
+
+            lector.readAsText(archivo);
         }
-    
-        lector.readAsText(archivo);
-    }
-    
+
 
         function makeProgress(elementId, normIndex, i) {
             if (i < norm3[normIndex]) {
-              i = i + 2;
-              $(elementId).css("width", i + "%").text(i + "%");
-              setTimeout(function() {
-                makeProgress(elementId, normIndex, i);
-              }, 100);
+                i = i + 2;
+                $(elementId).css("width", i + "%").text(i + "%");
+                setTimeout(function() {
+                    makeProgress(elementId, normIndex, i);
+                }, 100);
             }
-          }
-          
-          makeProgress("#raza", 0, 0);
-          makeProgress("#genero", 1, 0);
-          makeProgress("#orientacion", 2, 0);
-          makeProgress("#edad", 3, 0);
+        }
+
+        makeProgress("#raza", 0, 0);
+        makeProgress("#genero", 1, 0);
+        makeProgress("#orientacion", 2, 0);
+        makeProgress("#edad", 3, 0);
 
 
-          function makeProgress2(elementId, normIndex, i) {
+        function makeProgress2(elementId, normIndex, i) {
             if (i < norm[normIndex]) {
-              i = i + 2;
-              $(elementId).css("width", i + "%").text(i + "%");
-              setTimeout(function() {
-                makeProgress(elementId, normIndex, i);
-              }, 100);
+                i = i + 2;
+                $(elementId).css("width", i + "%").text(i + "%");
+                setTimeout(function() {
+                    makeProgress(elementId, normIndex, i);
+                }, 100);
             }
-          }
-          
-          makeProgress2("#raza1", 0, 0);
-          makeProgress2("#genero1", 1, 0);
-          makeProgress2("#orientacion1", 2, 0);
-          makeProgress2("#edad1", 3, 0);
-       
-       
+        }
 
-    
-    
+        makeProgress2("#raza1", 0, 0);
+        makeProgress2("#genero1", 1, 0);
+        makeProgress2("#orientacion1", 2, 0);
+        makeProgress2("#edad1", 3, 0);
+    </script>
 
-
-</script>
-
-{% endblock %}
-
+    {% endblock %}

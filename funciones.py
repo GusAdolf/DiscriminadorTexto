@@ -30,7 +30,7 @@ orientacion = ["maricon de mierda","virado","maricon", "marica de mierda", "del 
 "huevon","puñal","marimacha","afeminado","nena","nenita","niña","princesa","princeso","veado","boiola","bolleras","poco hombre","sopla nucas","intento de hombre","chupamela","chupa pitos","hembra",
 "reculeado","chullo huevo","puto de mierda","puto cagón","come pitos","marica reflechuchatumadre","chucha floja","triple homosexual","tetranutra","chupa huevos","chupa bolas","tortillera","lesbiana la puta tu madre",
 "puñeta","falta de huevos","lesbiana de mrd","maricón","maricona","hermafrodita","femina","machona","mixto","mariposon","maricota","invertido","joto","muerdealmohadas","mariquita",
-"pinche joto","mamapinga","mariconcito","putito"]
+"pinche joto","mamapinga","mariconcito","putito","marimacha"]
 
 edad = ["enano cara verga","guambra caca","come verga enano","niño hijo de puta","enano castroso","tu madre te cagó","enano hijo de puta","guambra asco", 
 "enano gil", "viejo de mierda", "enano ciego", "vieja inútil", "chamo imbécil", "guambra verga", "mocosa", "mocosos", "verga de chamos", "guambra coco", 

@@ -3,7 +3,6 @@ from flask import Flask,request, session, redirect, url_for
 from flask import render_template
 import os
 from flask import request
-import pymysql
 import funciones
 ##llamado a flask
 app = Flask(__name__)
