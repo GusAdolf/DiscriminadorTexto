@@ -41,7 +41,8 @@
         <div class="container-fluid hero-header bg-light py-1 mb-1">
             <div class="container-fluid hero-header bg-light py-1 mb-1" id="contenedor">
                 <div class="mb-1"> <br> <br> <br> <br>
-                    <h2>Ingresar Texto</h2><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"></textarea></div> <br> <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown" id="bot">Procesar</button>
+                    <h2>Ingresar Texto</h2><textarea class="form-control" name="frase" id="output" placeholder="Ingrese su texto aqui" rows="3"> {{texto}} </textarea></div> <br> <button type="submit" class="btn btn-primary py-3 px-4 animated slideInDown"
+                    id="bot">Procesar</button>
             </div>
 
 
@@ -234,6 +235,11 @@
         function makeProgress(elementId, normIndex, i) {
             if (i < norm3[normIndex]) {
                 i = i + 2;
+                $(elementId).css("width", i + "%").text(i + "%");
+                setTimeout(function() {
+                    makeProgress(elementId, normIndex, i);
+                }, 100);
+            } else if (i == 0) {
                 $(elementId).css("width", i + "%").text(i + "%");
                 setTimeout(function() {
                     makeProgress(elementId, normIndex, i);
