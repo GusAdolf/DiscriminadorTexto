@@ -185,6 +185,7 @@ def discriminatorio2(text):
   sum = np.sum(dis)
   porce = [0,0,0,0]
   discrim=[]
+    
   if dis[0]>0:
     ra = ["Discriminacion por raza en :",str(round((dis[0]*100)/sum,2))+"%"]
     vr.append(" ".join(ra))
@@ -209,6 +210,26 @@ def discriminatorio2(text):
     vr.append("El texto no tiene ningun tipo de discriminación")
     
     discrim.append("Nada")
+    
   
   print(porce)
-  return "\n".join(vr),porce, discrim
+  
+  maximo, posicion = encontrar_maximo(porce)  # Asignamos el primer elemento del vector como el máximo inicial
+
+  print("la posicion es ", posicion)  
+  return "\n".join(vr),porce, discrim , posicion
+
+def encontrar_maximo(vector):
+    maximo = vector[0]  # Asignamos el primer elemento del vector como el máximo inicial
+    posicion = 0  # Inicializamos la posición del máximo como 0
+
+    for i in range(1, len(vector)):  # Comenzamos desde el segundo elemento del vector
+        if vector[i] > maximo:  # Si encontramos un número mayor
+            maximo = vector[i]  # Actualizamos el valor máximo
+            posicion = i  # Actualizamos la posición del máximo
+
+    return maximo, posicion
+
+
+
+

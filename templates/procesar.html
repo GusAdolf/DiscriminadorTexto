@@ -116,6 +116,8 @@
                     </div>
                 </div>
 
+               
+
                 <div class="col-md-6">
 
 
@@ -176,7 +178,10 @@
                 </div>
 
 
-
+                <div> 
+               
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image}}" style="width: 300px; height: 300px;">
+                </div>
 
 
 
@@ -200,11 +205,9 @@
         // Obtener el valor de norm3 desde el atributo data-norm3
         var norm3 = JSON.parse(document.getElementById("norm3-values").getAttribute("data-norm3"));
         var norm = JSON.parse(document.getElementById("norm-values").getAttribute("data-norm"));
+        
+        var maxIndex = norm3.indexOf(Math.max(...norm3));
 
-
-
-        console.log(norm3);
-        console.log("hola mundo")
 
         function mostrarOpciones(opcionSeleccionada) {
             var opcionesContenedor = document.getElementById('contenedor');

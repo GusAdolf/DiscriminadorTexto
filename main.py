@@ -44,7 +44,14 @@ def result ():
     if(texto!=""):
         norm=funciones.discriminatorio1(texto)
         norm2=funciones.discriminatorio2(texto)
-        return render_template("procesar.html",norm=norm[1],norm3=norm2[1],texto=texto)
+        eda = os.path.join(app.config['UPLOAD_FOLDER'], 'edad.png')
+        raz = os.path.join(app.config['UPLOAD_FOLDER'], 'raza.png')
+        gen = os.path.join(app.config['UPLOAD_FOLDER'], 'genero.png')
+        ori = os.path.join(app.config['UPLOAD_FOLDER'], 'orientacion.png')
+        pos = norm2[3]
+        generos = [raz,gen,ori,eda]
+        print(norm2)
+        return render_template("procesar.html",norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos])
  
     """"elif(archivo!=""):
         norm=funciones.discriminatorio1(archivo)
@@ -53,6 +60,9 @@ def result ():
         return render_template("procesar.html",norm=norm,norm2=norm2[0],norm3=norm2[1],norm4=norm2[2],texto=archivo)
     """
     norm=funciones.normalizar(texto)
+    
+    
+    
 
 ##ejecutar el servicio web
 if __name__=='__main__':
