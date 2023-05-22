@@ -133,7 +133,15 @@ def discriminatorio1(text):
     porce2[3]=round((se*100)/st)
   if st==0:
     vt.append("El texto no tiene ningun tipo de discriminación")
-  return "\n".join(vt), porce2
+    
+  print(porce2)
+  
+  maximo2, posicion2 = encontrar_maximo(porce2)  # Asignamos el primer elemento del vector como el máximo inicial
+
+  print("la posicion es ", posicion2)  
+   
+   
+  return "\n".join(vt), porce2,posicion2
 
 ###COSENO VECTORIAL###
 r = set(np.concatenate(raza))
@@ -223,10 +231,13 @@ def encontrar_maximo(vector):
     maximo = vector[0]  # Asignamos el primer elemento del vector como el máximo inicial
     posicion = 0  # Inicializamos la posición del máximo como 0
 
-    for i in range(1, len(vector)):  # Comenzamos desde el segundo elemento del vector
-        if vector[i] > maximo:  # Si encontramos un número mayor
-            maximo = vector[i]  # Actualizamos el valor máximo
-            posicion = i  # Actualizamos la posición del máximo
+    if all(valor == 0 for valor in vector):  # Verificar si todos los valores del vector son cero
+        posicion = 4  # Asignar la posición 4 si todos los valores son cero
+    else:
+        for i in range(1, len(vector)):  # Comenzamos desde el segundo elemento del vector
+            if vector[i] > maximo:  # Si encontramos un número mayor
+                maximo = vector[i]  # Actualizamos el valor máximo
+                posicion = i  # Actualizamos la posición del máximo
 
     return maximo, posicion
 

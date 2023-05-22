@@ -14,7 +14,7 @@ app.config['UPLOAD_FOLDER'] = IMG_FOLDER
 
 @app.route('/', methods = ["GET","POST"])
 def home():
-    fondoP = os.path.join(app.config['UPLOAD_FOLDER'], 'fondo.png')
+    fondoP = os.path.join(app.config['UPLOAD_FOLDER'], 'fondo.webp')
     return render_template('index.html',fondo=fondoP)
 
 @app.route('/about', methods = ["GET","POST"])
@@ -47,11 +47,14 @@ def result ():
         eda = os.path.join(app.config['UPLOAD_FOLDER'], 'edad.png')
         raz = os.path.join(app.config['UPLOAD_FOLDER'], 'raza.png')
         gen = os.path.join(app.config['UPLOAD_FOLDER'], 'genero.png')
-        ori = os.path.join(app.config['UPLOAD_FOLDER'], 'orientacion.png')
+        ori = os.path.join(app.config['UPLOAD_FOLDER'], 'orientacion.webp')
+        nodis = os.path.join(app.config['UPLOAD_FOLDER'], 'nodis.png')
         pos = norm2[3]
-        generos = [raz,gen,ori,eda]
+        pos2 = norm[2]
+        generos = [raz,gen,ori,eda,nodis]
+        
         print(norm2)
-        return render_template("procesar.html",norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos])
+        return render_template("procesar.html",norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos],image2=generos[pos2])
  
     """"elif(archivo!=""):
         norm=funciones.discriminatorio1(archivo)

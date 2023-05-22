@@ -57,7 +57,7 @@
                     <div class="jumbotron">
                         <div class="container pt-3">
                             <h1 class="display-5 text-center  display-7"> Modelo Coseno Vectorial </h1>
-                            <h5> Corpus analizado: {{texto}}</h5>
+                              <!--<h5> Corpus analizado: {{texto}}</h5>  -->
                         </div>
                     </div>
 
@@ -113,6 +113,15 @@
 
                             </div>
                         </div>
+
+
+                        <div class="row mt-4">
+                            <div class="col-md-12 text-center">
+                                <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image}}" style="width: 300px; height: 300px;">
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -124,7 +133,7 @@
                     <div class="jumbotron">
                         <div class="container pt-3">
                             <h1 class="display-5 text-center  display-7"> Modelo Jaccard </h1>
-                            <h5> Corpus analizado: {{texto}}</h5>
+                            <!--<h5> Corpus analizado: {{texto}}</h5>  -->
                         </div>
                     </div>
 
@@ -174,14 +183,18 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12 text-center">
+                                <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image2}}" style="width: 300px; height: 300px;">
+
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
-
-                <div> 
-               
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image}}" style="width: 300px; height: 300px;">
-                </div>
 
 
 
@@ -207,6 +220,7 @@
         var norm = JSON.parse(document.getElementById("norm-values").getAttribute("data-norm"));
         
         var maxIndex = norm3.indexOf(Math.max(...norm3));
+        var maxIndex2 = norm.indexOf(Math.max(...norm));
 
 
         function mostrarOpciones(opcionSeleccionada) {
@@ -237,7 +251,7 @@
 
         function makeProgress(elementId, normIndex, i) {
             if (i < norm3[normIndex]) {
-                i = i + 2;
+                i = i + 1;
                 $(elementId).css("width", i + "%").text(i + "%");
                 setTimeout(function() {
                     makeProgress(elementId, normIndex, i);
@@ -258,12 +272,19 @@
 
         function makeProgress2(elementId, normIndex, i) {
             if (i < norm[normIndex]) {
-                i = i + 2;
+                i = i + 1;
                 $(elementId).css("width", i + "%").text(i + "%");
                 setTimeout(function() {
-                    makeProgress(elementId, normIndex, i);
+                    makeProgress2(elementId, normIndex, i);
                 }, 100);
             }
+             else if (i == 0) {
+            $(elementId).css("width", i + "%").text(i + "%");
+            setTimeout(function() {
+                makeProgress2(elementId, normIndex, i);
+            }, 100);
+            }
+            
         }
 
         makeProgress2("#raza1", 0, 0);
