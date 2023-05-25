@@ -17,20 +17,22 @@ raza = ["negro","color carbón","esto no es África","se te acabó la tinta","si
 "longo feo", "negro miedo", "indio asqueroso", "longo estúpido", "negra", "longo pasposo", "longo pendejo ", "mono infeliz", "mono puto", "longo verga", "negro puto",
 "india puerca", "negra asco", "asco de negros", "indios sucios ", "longos asquerosos" ,"indio","longa", "mono asco","imbecil", "hijo puta","mamaracho", "adefesioso",
 "ruliman","paisano","indio mmvrg","indio hdp","indio hp","mono mmvrg","mono hp","mono cvrg","mono vrg","mono hdp","negro sucio","indio sucio","mono sucio",
-"anda vender cocada","negro mal parido","costeño mal parido","indio come papa"]
+"anda vender cocada","negro mal parido","costeño mal parido","indio come papa","indio","mendigo","paramo","monte","campo","delincuente","anaco","merienda","cholo","jibaro",
+"longo","salvaje","serrano","mono","parecen del paramo","esa gente","como longo mismo","personas civilizadas"]
 
 genero = ["loca", "puta", "sirvienta", "marrana", "ignorante", "mujer tenías que ser", "a cocinar", "mamacita", "perra", "puto", "zorra", "indecente", "cochina","cochino", 
 "zafada", "loco","zafado", "hombre tenías que ser", "patán", "cojuda", "cojudo", "desgraciado", "desgraciada", "analfabeto","analfabeta", "cornudo", "cornuda","cornudos", 
 "perra de mierda","facilota","chucha","reflechucha","chepa","verga","mierda","cabron","cabrón","gil","retrasado","lelo","porqueria","apestoso","maldito","a la cocina","menso",
 "mensa","estupida","estupido","cachudo","cachuda","bruto","delicada","delicado","bruta","tonta","tonto","zopenco","zopenca","tarado","tarada","imbécil","puta barata",
-"chucha apestoza","sapa de mrd","sapo cabrón", "idiota","putita","putota","reputa","triplehijueputa","tontos"]
+"chucha apestoza","sapa de mrd","sapo cabrón", "idiota","putita","putota","reputa","triplehijueputa","tontos","carishina","wambra","en la cocina","macho","mantiene","nena",'mariquita',
+"gordita","gorditas","horrososa","horrorosas","minifalda","no hable","señora","maquillaje","tecnocrata","tecnocumbiera","cumbiambera", "hombrecito","mujercita","varon","como el taita"]
 
 orientacion = ["maricon de mierda","virado","maricon", "marica de mierda", "del otro bando", "menestra puto", "maricon imbécil", "gay asco", "gay de verga", 
 "maricas asquerosos", "pedazos putos", "traga pitos","muerde almohadas", "culo flojo", "maricon imbecil", "marica", "gay", "menestron", "menestra","pajero",
 "huevon","puñal","marimacha","afeminado","nena","nenita","niña","princesa","princeso","veado","boiola","bolleras","poco hombre","sopla nucas","intento de hombre","chupamela","chupa pitos","hembra",
 "reculeado","chullo huevo","puto de mierda","puto cagón","come pitos","marica reflechuchatumadre","chucha floja","triple homosexual","tetranutra","chupa huevos","chupa bolas","tortillera","lesbiana la puta tu madre",
 "puñeta","falta de huevos","lesbiana de mrd","maricón","maricona","hermafrodita","femina","machona","mixto","mariposon","maricota","invertido","joto","muerdealmohadas","mariquita",
-"pinche joto","mamapinga","mariconcito","putito","marimacha"]
+"pinche joto","mamapinga","mariconcito","putito","marimacha","loca","locas","hombresito","mujercita","mariposon","afeminado","arete","golosa","camina","canoa","arroz con chancho","menestra","hombresito","que eres sopa","se le moja la canoa"]
 
 edad = ["enano cara verga","guambra caca","come verga enano","niño hijo de puta","enano castroso","tu madre te cagó","enano hijo de puta","guambra asco", 
 "enano gil", "viejo de mierda", "enano ciego", "vieja inútil", "chamo imbécil", "guambra verga", "mocosa", "mocosos", "verga de chamos", "guambra coco", 
@@ -38,7 +40,7 @@ edad = ["enano cara verga","guambra caca","come verga enano","niño hijo de puta
 "mocosa inútil ", "mocoso malagradecido", "mocoso malagradecido ","mal agradecida", "mocoso mantenido", "mimado", "mocosa mantenida", "mimada",  "jodida", "jodido", "altanero",
 "altanera", "verga de juventud", "viejo lento","enano verga","guambra caca", "mocoso", "viejo verga", "flacido","enano","marrano","gordo", "puerco","cerdo",
 "chancho","esqueleto","guambra vrg","mocosa mal parida","guambra metido","condon roto","enano cabrón","mocoso gil","chamo vrg","viejo metido","viejo sapo","viejo chismoso",
-"mocoso bueno para nada","guambra castroso","guambra","viejo mal parido","mocoso mal educado"]
+"mocoso bueno para nada","guambra castroso","guambra","viejo mal parido","mocoso mal educado","vejete","limpiarte la nalga","mocoso","solo de adultos","adulto","caduco","caducos","dinosaurio", "estos jovenes","wambra"]
 raza = list(set(raza))
 
 genero = list(set(genero))
