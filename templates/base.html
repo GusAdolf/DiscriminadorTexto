@@ -49,12 +49,12 @@
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-4 py-lg-0">
-                <a href={{ url_for( 'home' ) }} class="nav-item nav-link active">Inicio</a>
-                <a href={{ url_for( 'procesar') }} class="nav-item nav-link">Procesar</a>
-                <a href={{ url_for( 'about' ) }} class="nav-item nav-link">Acerca de</a>
-                
+              <a href="{{ url_for('home') }}" class="nav-item nav-link {% if request.path == url_for('home') %}active{% endif %}">Inicio</a>
+              <a href="{{ url_for('procesar') }}" class="nav-item nav-link {% if request.path == url_for('procesar') %}active{% endif %}">Procesar</a>
+              <a href="{{ url_for('about') }}" class="nav-item nav-link {% if request.path == url_for('about') %}active{% endif %}">Acerca de</a>
             </div>
-        </div>
+          </div>
+          
         </nav>
 
         {% block content %} {% endblock %}

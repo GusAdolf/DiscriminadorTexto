@@ -44,17 +44,17 @@ def result ():
     if(texto!=""):
         norm=funciones.discriminatorio1(texto)
         norm2=funciones.discriminatorio2(texto)
-        eda = os.path.join(app.config['UPLOAD_FOLDER'], 'edad.png')
-        raz = os.path.join(app.config['UPLOAD_FOLDER'], 'raza.png')
-        gen = os.path.join(app.config['UPLOAD_FOLDER'], 'genero.png')
-        ori = os.path.join(app.config['UPLOAD_FOLDER'], 'orientacion.webp')
-        nodis = os.path.join(app.config['UPLOAD_FOLDER'], 'nodis.png')
+        eda = os.path.join(app.config['UPLOAD_FOLDER'], 'edad.jpg')
+        raz = os.path.join(app.config['UPLOAD_FOLDER'], 'raza.jpg')
+        gen = os.path.join(app.config['UPLOAD_FOLDER'], 'genero.jpg')
+        ori = os.path.join(app.config['UPLOAD_FOLDER'], 'orientacion.jpg')
+        nodis = os.path.join(app.config['UPLOAD_FOLDER'], 'nada.jpg')
         pos = norm2[3]
         pos2 = norm[2]
         generos = [raz,gen,ori,eda,nodis]
         
         print(norm2)
-        return render_template("procesar.html",norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos],image2=generos[pos2])
+        return render_template("procesar.html",norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos],image2=generos[pos2],pos1=pos,pos2=pos2)
  
     """"elif(archivo!=""):
         norm=funciones.discriminatorio1(archivo)
