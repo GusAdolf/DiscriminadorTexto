@@ -15,7 +15,8 @@ app.config['UPLOAD_FOLDER'] = IMG_FOLDER
 @app.route('/', methods = ["GET","POST"])
 def home():
     fondoP = os.path.join(app.config['UPLOAD_FOLDER'], 'fondo.webp')
-    return render_template('index.html',fondo=fondoP)
+    gus = os.path.join(app.config['UPLOAD_FOLDER'], 'gus.jpg')
+    return render_template('index.html',fondo=fondoP,g=gus)
 
 @app.route('/about', methods = ["GET","POST"])
 def about():

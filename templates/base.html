@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Discriminador</title>
+    <title>EquityScanner</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -44,7 +44,8 @@
       
 
         <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+
+        <!--  <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
         <a href={{ url_for( 'home' ) }} class="navbar-brand d-flex align-items-center"><h2 class="m-0 text-primary"><img class="img-fluid me-2" src="img/icon-1.png" alt="" style="width: 45px;" />Discriminador</h2></a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -55,7 +56,33 @@
             </div>
           </div>
           
+        </nav> -->
+
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+          <a href="{{ url_for('home') }}" class="navbar-brand d-flex align-items-center">
+              <div class="container-fluid bg-light footer mt-2 pt-2 wow fadeIn" > 
+                <h2 class="m-0 text-primary">
+                  <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ g }}" style="width: 75px; height: 75px;">
+                  <img class="img-fluid me-2" src="img/icon-1.png" alt="" style="width: 45px;" />
+                  <img src="ruta/imagen1.png" alt="Imagen 1" style="width: 45px;" />
+                  <img src="ruta/imagen2.png" alt="Imagen 2" style="width: 45px;" />
+                  <img src="ruta/imagen3.png" alt="Imagen 3" style="width: 45px;" />
+              </h2>
+              </div>
+              
+          </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+              <div class="navbar-nav ms-auto py-4 py-lg-0">
+                  <a href="{{ url_for('home') }}" class="nav-item nav-link {% if request.path == url_for('home') %}active{% endif %}">Inicio</a>
+                  <a href="{{ url_for('procesar') }}" class="nav-item nav-link {% if request.path == url_for('procesar') %}active{% endif %}">Procesar</a>
+                  <a href="{{ url_for('about') }}" class="nav-item nav-link {% if request.path == url_for('about') %}active{% endif %}">Acerca de</a>
+              </div>
+          </div>
         </nav>
+       
 
         {% block content %} {% endblock %}
         <!-- Footer Start -->
