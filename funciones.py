@@ -40,7 +40,7 @@ edad = ["enano cara verga","guambra caca","come verga enano","niño hijo de puta
 "mocosa inútil ", "mocoso malagradecido", "mocoso malagradecido ","mal agradecida", "mocoso mantenido", "mimado", "mocosa mantenida", "mimada",  "jodida", "jodido", "altanero",
 "altanera", "verga de juventud", "viejo lento","enano verga","guambra caca", "mocoso", "viejo verga", "flacido","enano","marrano","gordo", "puerco","cerdo",
 "chancho","esqueleto","guambra vrg","mocosa mal parida","guambra metido","condon roto","enano cabrón","mocoso gil","chamo vrg","viejo metido","viejo sapo","viejo chismoso",
-"mocoso bueno para nada","guambra castroso","guambra","viejo mal parido","mocoso mal educado","vejete","limpiarte la nalga","mocoso","solo de adultos","adulto","caduco","caducos","dinosaurio", "estos jovenes","wambra"]
+"mocoso bueno para nada","guambra castroso","guambra","viejo mal parido","mocoso mal educado","vejete","limpiarte la nalga","mocoso","solo de adultos","adulto","caduco","caducos","dinosaurio", "estos jovenes","wambra","viejo sabroso"]
 raza = list(set(raza))
 
 genero = list(set(genero))
