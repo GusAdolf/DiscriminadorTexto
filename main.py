@@ -15,22 +15,22 @@ app.config['UPLOAD_FOLDER'] = IMG_FOLDER
 @app.route('/', methods = ["GET","POST"])
 def home():
     fondoP = os.path.join(app.config['UPLOAD_FOLDER'], 'fondo.webp')
-    gus = os.path.join(app.config['UPLOAD_FOLDER'], 'gus.jpg')
-    return render_template('index.html',fondo=fondoP,g=gus)
+    sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
+    return render_template('index.html',fondo=fondoP,sale=sale)
 
 @app.route('/about', methods = ["GET","POST"])
 def about():
-    
+    sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
     gus = os.path.join(app.config['UPLOAD_FOLDER'], 'gus.jpg')
     
     alexis = os.path.join(app.config['UPLOAD_FOLDER'], 'alexis.jpeg')
     
-    return render_template('info.html', g=gus, a=alexis)
+    return render_template('info.html', g=gus, a=alexis, sale=sale)
 
 @app.route('/procesar', methods = ["GET","POST"])
 def procesar():
-    
-    return render_template('procesar.html')
+    sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
+    return render_template('procesar.html', sale=sale)
 
 
 
@@ -41,7 +41,7 @@ def result ():
     output= request.form.to_dict()
     texto=output["frase"]
     #archivo=output["archivo"]
-  
+    
     if(texto!=""):
         norm=funciones.discriminatorio1(texto)
         norm2=funciones.discriminatorio2(texto)
@@ -53,9 +53,10 @@ def result ():
         pos = norm2[3]
         pos2 = norm[2]
         generos = [raz,gen,ori,eda,nodis]
-        
+    
         print(norm2)
-        return render_template("procesar.html",norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos],image2=generos[pos2],pos1=pos,pos2=pos2)
+        ups = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
+        return render_template("procesar.html",sale=ups, norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos],image2=generos[pos2],pos1=pos,pos2=pos2)
  
     """"elif(archivo!=""):
         norm=funciones.discriminatorio1(archivo)
@@ -64,6 +65,8 @@ def result ():
         return render_template("procesar.html",norm=norm,norm2=norm2[0],norm3=norm2[1],norm4=norm2[2],texto=archivo)
     """
     norm=funciones.normalizar(texto)
+    
+   
     
     
     
