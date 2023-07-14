@@ -1,25 +1,73 @@
 #IMPORTAR LIBRERIA PARA USAR FRAMEWORK FLASK
-from flask import Flask,request, session, redirect, url_for
-from flask import render_template
+from flask import Flask, request, session, redirect, url_for, render_template, flash
+from datetime import timedelta
+from flask_session import Session
 import os
-from flask import request
 import funciones
+import bcrypt
+
 ##llamado a flask
 app = Flask(__name__)
 
-IMG_FOLDER = os.path.join('static', 'img')
+# Configuración de la sesión
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_FILE_DIR'] = 'sesion'
+app.config['SESSION_PERMANENT'] = False
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=30)
+
+# Clave secreta para firmar las cookies de sesión
 app.secret_key = 'my_secret_key'
 
+# Inicialización de la extensión de sesión
+Session(app)
+
+# Directorio de imágenes
+IMG_FOLDER = os.path.join('static', 'img')
 app.config['UPLOAD_FOLDER'] = IMG_FOLDER
+
+# Función para verificar las credenciales encriptadas
+def verify_credentials(username, password):
+    with open('credentials.txt', 'r') as file:
+        credentials = file.read().split(':')
+        if len(credentials) == 2:
+            stored_username = credentials[0]
+            stored_password_hash = credentials[1]
+
+            if username == stored_username and bcrypt.checkpw(password.encode(), stored_password_hash.encode()):
+                return True
+    return False
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        # Verificación de las credenciales de inicio de sesión
+        if verify_credentials(username, password):
+            session['logged_in'] = True
+            session.permanent = True
+            return redirect(url_for('home'))
+        else:
+            flash('Credenciales incorrectas')
+    
+    return render_template('login.html')
+
+
+
 
 @app.route('/', methods = ["GET","POST"])
 def home():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
     fondoP = os.path.join(app.config['UPLOAD_FOLDER'], 'fondo.webp')
     sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
     return render_template('index.html',fondo=fondoP,sale=sale)
 
 @app.route('/about', methods = ["GET","POST"])
 def about():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
     sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
     gus = os.path.join(app.config['UPLOAD_FOLDER'], 'gus.jpg')
     
@@ -29,6 +77,8 @@ def about():
 
 @app.route('/procesar', methods = ["GET","POST"])
 def procesar():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
     sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
     return render_template('procesar.html', sale=sale)
 

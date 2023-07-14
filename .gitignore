@@ -1,3 +1,6 @@
 __pycache__
 /logs/
 gunicorn_config.py
+/sesion/
+credentials.txt
+generarKey.py

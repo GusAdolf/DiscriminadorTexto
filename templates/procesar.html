@@ -1,42 +1,44 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="container-fluid hero-header bg-light py-5 mb-5">
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-    <span class="navbar-toggler-icon"></span>
-</button>
+    
 
-        <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
-            <div class="nav-item dropdown text-center">
-                <a href="#" class="nav-link dropdown-toggle fs-4" data-bs-toggle="dropdown">Seleccione una Opcion</a>
-                <div class="dropdown-menu shadow-sm m-0">
-                    <a href="#" id="opcion-frase" class="dropdown-item" onclick="mostrarOpciones('frase')">Ingresar Texto</a>
-                    <a href="#" id="opcion-documento" class="dropdown-item" onclick="mostrarOpciones('documento')">Cargar Documento</a>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="text-center mb-3">
+                    <select class="form-select fs-4" onchange="mostrarOpciones(this.value)">
+                        <option disabled selected>Seleccione una opción</option>
+                        <option value="frase">Ingresar Texto</option>
+                        <option value="documento">Cargar Documento</option>
+                    </select>
                 </div>
             </div>
         </div>
-
         <style>
-            .dropdown-item.active {
-                background-color: #0d6efd;
-                color: #fff;
+            .form-select {
+                width: 100%;
+                max-width: 300px;
             }
         </style>
-
         <script>
-            $(function() {
-                // Al hacer clic en un elemento del menú desplegable
-                $('.dropdown-item').on('click', function() {
-                    // Eliminar la clase 'active' de todos los elementos del menú desplegable
-                    $('.dropdown-item').removeClass('active');
-                    // Agregar la clase 'active' al elemento seleccionado
-                    $(this).addClass('active');
-                });
-            });
+            function mostrarOpciones(opcion) {
+                var opcionFrase = document.getElementById('opcion-frase');
+                var opcionDocumento = document.getElementById('opcion-documento');
+                
+                opcionFrase.style.display = 'none';
+                opcionDocumento.style.display = 'none';
+    
+                if (opcion === 'frase') {
+                    opcionFrase.style.display = 'block';
+                } else if (opcion === 'documento') {
+                    opcionDocumento.style.display = 'block';
+                }
+            }
         </script>
-
-
-    </nav>
+    </div>
+    
+    
     <form class="row g-1" action="/result" method="POST">
         <div class="container-fluid hero-header bg-light py-1 mb-1">
             <div class="container-fluid hero-header bg-light py-1 mb-1" id="contenedor">
@@ -115,19 +117,20 @@
                         </div>
 
 
-                        <div class="row mt-4">
+                        <div class="row mt-4" id="resultado">
                             <div class="col-md-12 text-center">
                                 <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image }}" style="width: 300px; height: 300px;">
+                                <input type="hidden" name="pos1" value="{{ pos1 }}">
                                 {% if pos1 == 0 %}
-                                    <h2 class="text-dark display-5">Discriminación por raza</h2>
+                                    <h2 class="text-dark display-5">Discriminación por Raza</h2>
                                 {% elif pos1 == 1 %}
-                                    <h2 class="text-dark display-5">Discriminación por género</h2>
+                                    <h2 class="text-dark display-5">Discriminación por Género</h2>
                                 {% elif pos1 == 2 %}
-                                    <h2 class="text-dark display-5">Discriminación por orientación sexual</h2>
+                                    <h2 class="text-dark display-5">Discriminación por Orientación Sexual</h2>
                                 {% elif pos1 == 3 %}
-                                    <h2 class="text-dark display-5">Discriminación por edad</h2>
+                                    <h2 class="text-dark display-5">Discriminación por Edad</h2>
                                 {% elif pos1 == 4 %}
-                                    <h2 class="text-dark display-5">No contiene discriminación</h2>
+                                    <h2 class="text-dark display-5">No contiene Discriminación</h2>
                                 {% endif %}
                             </div>
                         </div>
@@ -197,19 +200,20 @@
                             </div>
                         </div>
 
-                        <div class="row mt-4">
+                        <div class="row mt-4" id="resultado2">
                             <div class="col-md-12 text-center">
-                                <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image2 }}" style="width: 300px; height: 300px;">
+                                <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image }}" style="width: 300px; height: 300px;">
+                                <input type="hidden" name="pos2" value="{{ pos2 }}">
                                 {% if pos2 == 0 %}
-                                    <h2 class="text-dark display-5">Discriminación por raza</h2>
+                                    <h2 class="text-dark display-5">Discriminación por Raza</h2>
                                 {% elif pos2 == 1 %}
-                                    <h2 class="text-dark display-5">Discriminación por género</h2>
+                                    <h2 class="text-dark display-5">Discriminación por Género</h2>
                                 {% elif pos2 == 2 %}
-                                    <h2 class="text-dark display-5">Discriminación por orientación sexual</h2>
+                                    <h2 class="text-dark display-5">Discriminación por Orientación Sexual</h2>
                                 {% elif pos2 == 3 %}
-                                    <h2 class="text-dark display-5">Discriminación por edad</h2>
+                                    <h2 class="text-dark display-5">Discriminación por Edad</h2>
                                 {% elif pos2 == 4 %}
-                                    <h2 class="text-dark display-5">No contiene discriminación</h2>
+                                    <h2 class="text-dark display-5">No contiene Discriminación</h2>
                                 {% endif %}
                             </div>
                         </div>
@@ -262,7 +266,7 @@
 
                 document.getElementById('file-input').addEventListener('change', leerArchivo, false);
             }
-        }
+        } 
 
         function leerArchivo(evento) {
             var archivo = evento.target.files[0];

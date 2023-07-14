@@ -244,5 +244,3 @@ def encontrar_maximo(vector):
     return maximo, posicion
 
 
-
-
