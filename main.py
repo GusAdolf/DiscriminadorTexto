@@ -108,12 +108,6 @@ def result ():
         ups = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
         return render_template("procesar.html",sale=ups, norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos],image2=generos[pos2],pos1=pos,pos2=pos2)
  
-    """"elif(archivo!=""):
-        norm=funciones.discriminatorio1(archivo)
-        norm2=funciones.discriminatorio2(archivo)
-    
-        return render_template("procesar.html",norm=norm,norm2=norm2[0],norm3=norm2[1],norm4=norm2[2],texto=archivo)
-    """
     norm=funciones.normalizar(texto)
     
    

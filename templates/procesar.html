@@ -38,7 +38,6 @@
         </script>
     </div>
     
-    
     <form class="row g-1" action="/result" method="POST">
         <div class="container-fluid hero-header bg-light py-1 mb-1">
             <div class="container-fluid hero-header bg-light py-1 mb-1" id="contenedor">
@@ -117,20 +116,19 @@
                         </div>
 
 
-                        <div class="row mt-4" id="resultado">
+                        <div class="row mt-4">
                             <div class="col-md-12 text-center">
                                 <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image }}" style="width: 300px; height: 300px;">
-                                <input type="hidden" name="pos1" value="{{ pos1 }}">
                                 {% if pos1 == 0 %}
-                                    <h2 class="text-dark display-5">Discriminación por Raza</h2>
+                                    <h2 class="text-dark display-5">Discriminación por raza</h2>
                                 {% elif pos1 == 1 %}
-                                    <h2 class="text-dark display-5">Discriminación por Género</h2>
+                                    <h2 class="text-dark display-5">Discriminación por género</h2>
                                 {% elif pos1 == 2 %}
-                                    <h2 class="text-dark display-5">Discriminación por Orientación Sexual</h2>
+                                    <h2 class="text-dark display-5">Discriminación por orientación sexual</h2>
                                 {% elif pos1 == 3 %}
-                                    <h2 class="text-dark display-5">Discriminación por Edad</h2>
+                                    <h2 class="text-dark display-5">Discriminación por edad</h2>
                                 {% elif pos1 == 4 %}
-                                    <h2 class="text-dark display-5">No contiene Discriminación</h2>
+                                    <h2 class="text-dark display-5">No contiene discriminación</h2>
                                 {% endif %}
                             </div>
                         </div>
@@ -200,20 +198,19 @@
                             </div>
                         </div>
 
-                        <div class="row mt-4" id="resultado2">
+                        <div class="row mt-4">
                             <div class="col-md-12 text-center">
                                 <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ image2 }}" style="width: 300px; height: 300px;">
-                                <input type="hidden" name="pos2" value="{{ pos2 }}">
                                 {% if pos2 == 0 %}
-                                    <h2 class="text-dark display-5">Discriminación por Raza</h2>
+                                    <h2 class="text-dark display-5">Discriminación por raza</h2>
                                 {% elif pos2 == 1 %}
-                                    <h2 class="text-dark display-5">Discriminación por Género</h2>
+                                    <h2 class="text-dark display-5">Discriminación por género</h2>
                                 {% elif pos2 == 2 %}
-                                    <h2 class="text-dark display-5">Discriminación por Orientación Sexual</h2>
+                                    <h2 class="text-dark display-5">Discriminación por orientación sexual</h2>
                                 {% elif pos2 == 3 %}
-                                    <h2 class="text-dark display-5">Discriminación por Edad</h2>
+                                    <h2 class="text-dark display-5">Discriminación por edad</h2>
                                 {% elif pos2 == 4 %}
-                                    <h2 class="text-dark display-5">No contiene Discriminación</h2>
+                                    <h2 class="text-dark display-5">No contiene discriminación</h2>
                                 {% endif %}
                             </div>
                         </div>
@@ -266,7 +263,7 @@
 
                 document.getElementById('file-input').addEventListener('change', leerArchivo, false);
             }
-        } 
+        }
 
         function leerArchivo(evento) {
             var archivo = evento.target.files[0];
@@ -324,5 +321,4 @@
         makeProgress2("#orientacion1", 2, 0);
         makeProgress2("#edad1", 3, 0);
     </script>
-
     {% endblock %}
