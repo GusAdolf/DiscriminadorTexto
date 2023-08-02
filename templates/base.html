@@ -60,30 +60,31 @@
           
         </nav> -->
 
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-        <a href="{{ url_for('home') }}" class="navbar-brand d-flex align-items-center">
-            <div class="container-fluid pt-2 mt-2 wow fadeIn">
-                <h2 class="m-0 text-primary">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="{{ sale }}" style="width: 75px; height: 75px;">
-                    <img class="img-fluid me-2" src="img/icon-1.png" alt="" style="width: 45px;" />
-
-
-                </h2>
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+            <a href="{{ url_for('home') }}" class="navbar-brand d-flex align-items-center">
+                <div class="container-fluid pt-2 mt-2 wow fadeIn">
+                    <h2 class="m-0 text-primary">
+                          
+                        <div class="d-flex justify-content-center">
+                            <img class="mx-auto mb-3" src="{{ sale }}"  style="max-width: 60px; max-height: 60px; padding-right: 15x ; margin-top: 60px;"/>
+                            <img class="mx-auto mb-3" src="{{ logo1 }}" style="max-width: 180px; max-height: 180px; padding-left: 15px; margin-top: 30px;" />
+                            <img class="mx-auto mb-3" src="{{ logo2 }}" style="max-width: 200px; max-height: 200px; margin-top: 30px;" />
+                        </div>
+                    </h2>
+                </div>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-4 py-lg-0">
+                    <a href="{{ url_for('home') }}" class="nav-item nav-link {% if request.path == url_for('home') %}active{% endif %}">Inicio</a>
+                    <a href="{{ url_for('procesar') }}" class="nav-item nav-link {% if request.path == url_for('procesar') %}active{% endif %}">Procesar</a>
+                    <a href="{{ url_for('about') }}" class="nav-item nav-link {% if request.path == url_for('about') %}active{% endif %}">Acerca de</a>
+                </div>
             </div>
-
-        </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-4 py-lg-0">
-                <a href="{{ url_for('home') }}" class="nav-item nav-link {% if request.path == url_for('home') %}active{% endif %}">Inicio</a>
-                <a href="{{ url_for('procesar') }}" class="nav-item nav-link {% if request.path == url_for('procesar') %}active{% endif %}">Procesar</a>
-                <a href="{{ url_for('about') }}" class="nav-item nav-link {% if request.path == url_for('about') %}active{% endif %}">Acerca de</a>
-            </div>
-        </div>
-    </nav>
-
+        </nav>
+        
 
     {% block content %} {% endblock %}
     <!-- Footer Start -->

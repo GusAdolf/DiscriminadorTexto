@@ -62,25 +62,31 @@ def home():
         return redirect(url_for('login'))
     fondoP = os.path.join(app.config['UPLOAD_FOLDER'], 'fondo.webp')
     sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
-    return render_template('index.html',fondo=fondoP,sale=sale)
+    log1 = os.path.join(app.config['UPLOAD_FOLDER'], 'ingles.svg')
+    log2 = os.path.join(app.config['UPLOAD_FOLDER'], 'LG1_ingles.svg')
+    return render_template('index.html',fondo=fondoP,sale=sale,logo1=log1,logo2=log2)
 
 @app.route('/about', methods = ["GET","POST"])
 def about():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
+    log1 = os.path.join(app.config['UPLOAD_FOLDER'], 'ingles.svg')
+    log2 = os.path.join(app.config['UPLOAD_FOLDER'], 'LG1_ingles.svg')
     gus = os.path.join(app.config['UPLOAD_FOLDER'], 'gus.jpg')
     
     alexis = os.path.join(app.config['UPLOAD_FOLDER'], 'alexis.jpeg')
     
-    return render_template('info.html', g=gus, a=alexis, sale=sale)
+    return render_template('info.html', g=gus, a=alexis, sale=sale,logo1=log1,logo2=log2)
 
 @app.route('/procesar', methods = ["GET","POST"])
 def procesar():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     sale = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
-    return render_template('procesar.html', sale=sale)
+    log1 = os.path.join(app.config['UPLOAD_FOLDER'], 'ingles.svg')
+    log2 = os.path.join(app.config['UPLOAD_FOLDER'], 'LG1_ingles.svg')
+    return render_template('procesar.html', sale=sale,logo1=log1,logo2=log2)
 
 
 
@@ -106,7 +112,9 @@ def result ():
     
         print(norm2)
         ups = os.path.join(app.config['UPLOAD_FOLDER'], 'salesiana.png')
-        return render_template("procesar.html",sale=ups, norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos],image2=generos[pos2],pos1=pos,pos2=pos2)
+        log1 = os.path.join(app.config['UPLOAD_FOLDER'], 'ingles.svg')
+        log2 = os.path.join(app.config['UPLOAD_FOLDER'], 'LG1_ingles.svg')
+        return render_template("procesar.html",logo1=log1,logo2=log2,sale=ups, norm=norm[1],norm3=norm2[1],texto=texto,image=generos[pos],image2=generos[pos2],pos1=pos,pos2=pos2)
  
     norm=funciones.normalizar(texto)
     
